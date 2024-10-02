@@ -10,4 +10,8 @@
     <ProjectReference Include="..\DotnetAspireExample.ServiceDefaults\DotnetAspireExample.ServiceDefaults.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Aspire.Microsoft.Data.SqlClient" Version="8.2.1" />
+  </ItemGroup>
+
 </Project>
