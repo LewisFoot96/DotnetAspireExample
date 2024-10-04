@@ -16,7 +16,6 @@ builder.AddProject<Projects.DotnetAspireExample_Web>("webfrontend")
     .WithReference(cache)
     .WithReference(apiService);
 
-builder.AddNpmApp("react-weather", "C:\\Users\\lfoot\\source\\repos\\DotnetAspireExample\\reacttestproject")
-    .WithReference(apiService);
+builder.AddNpmApp("react-weather", "C:\\Users\\lfoot\\source\\repos\\DotnetAspireExample\\reacttestproject");
 
 builder.Build().Run();
