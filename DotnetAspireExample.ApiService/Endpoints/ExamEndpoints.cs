@@ -1,4 +1,5 @@
 ﻿using DotnetAspireExample.ApiService.Application.Exams.Commands;
+using DotnetAspireExample.ApiService.Application.Exams.Queries;
 using MediatR;
 
 namespace DotnetAspireExample.ApiService.Endpoints
@@ -11,7 +12,15 @@ namespace DotnetAspireExample.ApiService.Endpoints
             //Minimal apis use method injection
             group.MapPost("", CreateExam);
 
-            //group.MapGet("{id}", GetWeather);
+            group.MapGet("{name}", GetExam);
+        }
+
+        private static async Task<IResult> GetExam(string name, IMediator sender)
+        {
+            var result = await sender.Send(new GetExamQuery(name));
+
+            return
+                TypedResults.NoContent();
         }
 
         public static async Task<IResult> CreateExam(string examName, IMediator sender)

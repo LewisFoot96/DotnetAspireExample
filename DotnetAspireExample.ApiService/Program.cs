@@ -1,3 +1,4 @@
+using DotnetAspireExample.ApiService;
 using DotnetAspireExample.ApiService.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,12 +11,13 @@ builder.AddSqlServerClient("Server=tcp:sql-server-test-aspire.database.windows.n
 // Add services to the container.
 builder.Services.AddProblemDetails();
 
+builder.Services.AddMediatR(cfg =>
+    cfg.RegisterServicesFromAssembly(typeof(ExampleService).Assembly));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 app.UseExceptionHandler();
-
-
 
 app.MapDefaultEndpoints();
 
