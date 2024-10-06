@@ -1,18 +1,23 @@
 using DotnetAspireExample.ApiService;
-using DotnetAspireExample.ApiService.Endpoints;
+using DotnetAspireExample.ApiService.Exams.Application.Exams.Repository;
+using DotnetAspireExample.ApiService.Exams.Domain;
+using DotnetAspireExample.ApiService.Exams.Endpoints;
+using DotnetAspireExample.ApiService.Exams.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add service defaults & Aspire components.
 builder.AddServiceDefaults();
 
-builder.AddSqlServerClient("Server=tcp:sql-server-test-aspire.database.windows.net,1433;Initial Catalog=AspireTestDatabase;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication=\"Active Directory Default\";");
+builder.AddSqlServerClient("AZURE_SQL_CONNECTIONSTRING");
 
 // Add services to the container.
 builder.Services.AddProblemDetails();
 
 builder.Services.AddMediatR(cfg =>
-    cfg.RegisterServicesFromAssembly(typeof(ExampleService).Assembly));
+    cfg.RegisterServicesFromAssembly(typeof(Exam).Assembly));
+
+builder.Services.AddScoped<IRepository<Exam>, ExamDatabaseRepository>();
 
 var app = builder.Build();
 

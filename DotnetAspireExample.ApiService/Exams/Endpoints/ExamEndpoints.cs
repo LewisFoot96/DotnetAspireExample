@@ -1,8 +1,8 @@
-﻿using DotnetAspireExample.ApiService.Application.Exams.Commands;
-using DotnetAspireExample.ApiService.Application.Exams.Queries;
+﻿using DotnetAspireExample.ApiService.Exams.Application.Exams.Commands;
+using DotnetAspireExample.ApiService.Exams.Application.Exams.Queries;
 using MediatR;
 
-namespace DotnetAspireExample.ApiService.Endpoints
+namespace DotnetAspireExample.ApiService.Exams.Endpoints
 {
     public static class ExamEndpoints
     {
@@ -20,7 +20,7 @@ namespace DotnetAspireExample.ApiService.Endpoints
             var result = await sender.Send(new GetExamQuery(name));
 
             return
-                TypedResults.NoContent();
+                TypedResults.Ok(result);
         }
 
         public static async Task<IResult> CreateExam(string examName, IMediator sender)
