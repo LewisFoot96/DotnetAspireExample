@@ -17,12 +17,20 @@ namespace DotnetAspireExample.ApiService.Exams.Repository
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = "INSERT Exam (ExamId, ExamName) VALUES (1, 'LewisTest')";
+            cmd.CommandText = $"INSERT Exam (ExamId, ExamName) VALUES ({exam.ExamId}, {exam.ExamName})";
             cmd.Connection = Client;
 
-            await Client.OpenAsync();
-            cmd.ExecuteNonQuery();
-            await Client.CloseAsync();
+            try
+            {
+                await Client.OpenAsync();
+                var result = cmd.ExecuteNonQuery();
+                await Client.CloseAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
 
             return new Exam
             {

@@ -1,6 +1,8 @@
 ﻿using DotnetAspireExample.ApiService.Exams.Application.Exams.Commands;
+using DotnetAspireExample.ApiService.Exams.Application.Exams.DTOs;
 using DotnetAspireExample.ApiService.Exams.Application.Exams.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DotnetAspireExample.ApiService.Exams.Endpoints
 {
@@ -10,7 +12,7 @@ namespace DotnetAspireExample.ApiService.Exams.Endpoints
         {
             var group = app.MapGroup("exam");
             //Minimal apis use method injection
-            group.MapPost("", CreateExam);
+            group.MapPost("/", CreateExam);
 
             group.MapGet("{name}", GetExam);
         }
@@ -23,9 +25,9 @@ namespace DotnetAspireExample.ApiService.Exams.Endpoints
                 TypedResults.Ok(result);
         }
 
-        public static async Task<IResult> CreateExam(string examName, IMediator sender)
+        public static async Task<IResult> CreateExam([FromBody]CreateExamDto exam, IMediator sender)
         {
-            var result = await sender.Send(new CreateExamCommand(examName));
+            var result = await sender.Send(new CreateExamCommand(exam));
 
             return
                 TypedResults.NoContent();

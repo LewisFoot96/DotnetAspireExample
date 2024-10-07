@@ -17,7 +17,7 @@ namespace DotnetAspireExample.ApiService.Exams.Application.Exams.Commands.Handle
         {
             var exam = new Exam
             {
-                ExamName = request.examName
+                ExamName = request.Exam.ExamName
             };
             var result = await _examRepository.CreateAsync(exam, cancellationToken);
             return "Lewis";

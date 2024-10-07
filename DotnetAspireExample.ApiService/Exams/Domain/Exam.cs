@@ -2,6 +2,8 @@
 {
     public class Exam :IAggregationRoot
     {
+        public Guid ExamId { get;init; }
+
         public required string ExamName { get; init; }
 
         public int MaxMark { get; private set; }
