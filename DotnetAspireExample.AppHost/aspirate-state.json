@@ -1,0 +1,35 @@
+{
+  "projectPath": ".",
+  "outputPath": "aspirate-output",
+  "containerImageTags": [
+    "latest"
+  ],
+  "imagePullPolicy": "Always",
+  "containerBuilder": "docker",
+  "outputFormat": "kustomize",
+  "skipFinalKustomizeGeneration": false,
+  "privateRegistryEmail": "aspir8@aka.ms",
+  "includeDashboard": false,
+  "useCustomNamespace": false,
+  "secrets": {
+    "salt": "s6P/0a1gKpecsTSf",
+    "hash": "fE3obfDHPZaf2M/eC484UslHzxQtPJz9KjSDa\u002Byb2gc=",
+    "secrets": {
+      "sql-password": {
+        "value": "s6P/0a1gKpecsTSf3mzvv0TFyzCLbIzsNJcFIAsaEQkV9txQLU7rsoLqKdzVH6mstNs="
+      },
+      "cache": {},
+      "sql": {
+        "MSSQL_SA_PASSWORD": "s6P/0a1gKpecsTSf3mzvv0TFyzCLbIzsNJcFIAsaEQkV9txQLU7rsoLqKdzVH6mstNs="
+      },
+      "sqldb": {},
+      "apiservice": {
+        "ConnectionStrings__sqldb": "s6P/0a1gKpecsTSfSlU\u002BBCMasFeyA7ynJXuEyDEOCR4/valBOk6FtdLsI6r5XL6o58Morfhymh0EH1wMIZjVdS1hJgGFLn2sa2QpSqk\u002BIxsxzy7EsddM8MQMrkxzuPHl82QF2j8Q9/1zh/gmWJnEPXXvv/LZ\u002Bdga7nerGA//2Pqp"
+      },
+      "webfrontend": {
+        "ConnectionStrings__cache": "s6P/0a1gKpecsTSfnJ\u002BZrbZUQcnCVKNjaUT1ngEKGAA/9aIBfBs="
+      }
+    }
+  },
+  "processAllComponents": true
+}

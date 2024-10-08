@@ -1,0 +1,10 @@
+resources:
+- cache
+- sql
+- apiservice
+- webfrontend
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+
