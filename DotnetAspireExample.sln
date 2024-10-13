@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetAspireExample.Web", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetAspireExample.Tests", "DotnetAspireExample.Tests\DotnetAspireExample.Tests.csproj", "{F255C76C-1A0C-4F8B-A5EF-E1DD59C7AF3C}"
 EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "testlewisreact.client", "testlewisreact.client\testlewisreact.client.esproj", "{DCF4EFE1-DE11-440E-B59A-EAE69ED4223A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,12 @@ Global
 		{F255C76C-1A0C-4F8B-A5EF-E1DD59C7AF3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F255C76C-1A0C-4F8B-A5EF-E1DD59C7AF3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F255C76C-1A0C-4F8B-A5EF-E1DD59C7AF3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCF4EFE1-DE11-440E-B59A-EAE69ED4223A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCF4EFE1-DE11-440E-B59A-EAE69ED4223A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCF4EFE1-DE11-440E-B59A-EAE69ED4223A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DCF4EFE1-DE11-440E-B59A-EAE69ED4223A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCF4EFE1-DE11-440E-B59A-EAE69ED4223A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCF4EFE1-DE11-440E-B59A-EAE69ED4223A}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

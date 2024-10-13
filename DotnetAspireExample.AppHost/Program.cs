@@ -16,7 +16,7 @@ builder.AddProject<Projects.DotnetAspireExample_Web>("webfrontend")
     .WithReference(cache)
     .WithReference(apiService);
 
-builder.AddNpmApp("my-app", "C:\\Users\\lfoot\\source\\repos\\DotnetAspireExample\\my-app")
+builder.AddNpmApp("testreact", "C:\\Users\\lfoot\\source\\repos\\DotnetAspireExample\\testlewisreact.client")
     .WithReference(apiService);
 
 builder.Build().Run();

@@ -1,4 +1,5 @@
-﻿using DotnetAspireExample.ApiService.Exams.Application.Exams.Commands;
+﻿using Azure;
+using DotnetAspireExample.ApiService.Exams.Application.Exams.Commands;
 using DotnetAspireExample.ApiService.Exams.Application.Exams.DTOs;
 using DotnetAspireExample.ApiService.Exams.Application.Exams.Queries;
 using MediatR;
@@ -12,9 +13,9 @@ namespace DotnetAspireExample.ApiService.Exams.Endpoints
         {
             var group = app.MapGroup("exam");
             //Minimal apis use method injection
-            group.MapPost("/", CreateExam);
+            group.MapPost("/", CreateExam).RequireCors("_myAllowSpecificOrigins"); ;
 
-            group.MapGet("{name}", GetExam);
+            group.MapGet("{name}", GetExam).RequireCors("_myAllowSpecificOrigins");
         }
 
         private static async Task<IResult> GetExam(string name, IMediator sender)

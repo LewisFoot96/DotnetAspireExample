@@ -19,10 +19,28 @@ builder.Services.AddMediatR(cfg =>
 
 builder.Services.AddScoped<IRepository<Exam>, ExamDatabaseRepository>();
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(MyAllowSpecificOrigins,
+                          policy =>
+                          {
+                              policy.WithOrigins("https://localhost:7449")
+                                                  .AllowAnyHeader()
+                                                  .AllowAnyMethod()
+                                                  .AllowAnyOrigin()
+                                                  //.AllowCredentials()
+                                                  .SetIsOriginAllowed(_ => true);
+                          });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 app.UseExceptionHandler();
+
+app.UseCors();
 
 app.MapDefaultEndpoints();
 
