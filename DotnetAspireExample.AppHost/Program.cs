@@ -19,4 +19,7 @@ builder.AddProject<Projects.DotnetAspireExample_Web>("webfrontend")
 builder.AddNpmApp("testreact", "C:\\Users\\lfoot\\source\\repos\\DotnetAspireExample\\testlewisreact.client")
     .WithReference(apiService);
 
+builder.AddProject<Projects.DotnetAspireExample_FunctionApp>("dotnetaspireexample-functionapp")
+    .WithReference(apiService); ;
+
 builder.Build().Run();
