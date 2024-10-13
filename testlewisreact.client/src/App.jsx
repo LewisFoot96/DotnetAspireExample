@@ -21,12 +21,9 @@ function App() {
     );
 
     async function populateExamData() {
-        console.log("Lewis was here");
-        console.log("Lewis was here");
         const response = await fetch('https://localhost:7449/exam/name');
         const data = await response.json();
         console.log(data);
-        console.log("Lewis was here");
         setExams(data);
     }
 }
