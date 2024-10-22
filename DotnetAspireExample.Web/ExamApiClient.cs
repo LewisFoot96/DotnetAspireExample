@@ -1,12 +1,17 @@
+using static Google.Protobuf.Reflection.SourceCodeInfo.Types;
+using System.Net.Http;
+using System.Text.Json;
+using DotnetAspireExample.Shared;
+
 namespace DotnetAspireExample.Web;
 
 public class ExamApiClient(HttpClient httpClient)
 {
-    public async Task<ExamItem[]> GetExamAsync(int maxItems = 10, CancellationToken cancellationToken = default)
+    public async Task<ExamDto[]> GetExamAsync(int maxItems = 10, CancellationToken cancellationToken = default)
     {
-        List<ExamItem>? exams = null;
+        List<ExamDto>? exams = null;
 
-        await foreach (var exam in httpClient.GetFromJsonAsAsyncEnumerable<ExamItem>("/exam/lewis", cancellationToken))
+        await foreach (var exam in httpClient.GetFromJsonAsAsyncEnumerable<ExamDto>("/exam/lewis", cancellationToken))
         {
             if (exams?.Count >= maxItems)
             {
@@ -21,6 +26,23 @@ public class ExamApiClient(HttpClient httpClient)
 
         return exams?.ToArray() ?? [];
     }
-}
 
-public record ExamItem(string ExamName);
+    public async Task CreateExamAsync(ExamDto examItem, CancellationToken cancellationToken = default)
+    {
+        var json = JsonSerializer.Serialize(examItem);
+
+        var httpContent = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+        var httpResult = await httpClient.PostAsync($"/exam/", httpContent);
+
+        if (httpResult.IsSuccessStatusCode)
+        {
+            var result = (await JsonSerializer.DeserializeAsync<ExamDto>(
+                await httpResult.Content.ReadAsStreamAsync(),
+                new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = false,
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                }))!;
+        }
+    }
+}

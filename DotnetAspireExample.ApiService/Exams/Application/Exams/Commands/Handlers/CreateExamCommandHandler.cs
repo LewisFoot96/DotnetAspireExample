@@ -13,11 +13,11 @@ namespace DotnetAspireExample.ApiService.Exams.Application.Exams.Commands.Handle
             _examRepository = repository;
         }
 
-        async Task<string> IRequestHandler<CreateExamCommand, string>.Handle(CreateExamCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(CreateExamCommand request, CancellationToken cancellationToken)
         {
             var exam = new Exam
             {
-                ExamName = request.Exam.ExamName
+                ExamName = request.Exam.ExamName       
             };
             var result = await _examRepository.CreateAsync(exam, cancellationToken);
             return "Lewis";

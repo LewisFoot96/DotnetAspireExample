@@ -1,4 +1,6 @@
 ﻿@page "/exam"
+@rendermode InteractiveServer
+@using DotnetAspireExample.Shared
 @attribute [StreamRendering(true)]
 @attribute [OutputCache(Duration = 10)]
 
@@ -29,15 +31,21 @@ else
                     <td>@exam.ExamName</td>
                 </tr>
             }
+            <button @onclick="AddRandomExam">Add Random Exam</button>
         </tbody>
     </table>
 }
 
 @code {
-    private ExamItem[]? exams;
+    private ExamDto[]? exams;
 
     protected override async Task OnInitializedAsync()
     {
         exams = await ExamApi.GetExamAsync();
+    }
+
+    private async Task AddRandomExam()
+    {
+        await ExamApi.CreateExamAsync(new ExamDto("Test", 10));
     }
 }

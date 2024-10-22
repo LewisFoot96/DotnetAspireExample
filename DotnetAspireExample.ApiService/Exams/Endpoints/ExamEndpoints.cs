@@ -1,7 +1,6 @@
-﻿using Azure;
-using DotnetAspireExample.ApiService.Exams.Application.Exams.Commands;
-using DotnetAspireExample.ApiService.Exams.Application.Exams.DTOs;
+﻿using DotnetAspireExample.ApiService.Exams.Application.Exams.Commands;
 using DotnetAspireExample.ApiService.Exams.Application.Exams.Queries;
+using DotnetAspireExample.Shared;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,7 +25,7 @@ namespace DotnetAspireExample.ApiService.Exams.Endpoints
                 TypedResults.Ok(result);
         }
 
-        public static async Task<IResult> CreateExam([FromBody]CreateExamDto exam, IMediator sender)
+        public static async Task<IResult> CreateExam([FromBody]ExamDto exam, IMediator sender)
         {
             var result = await sender.Send(new CreateExamCommand(exam));
 

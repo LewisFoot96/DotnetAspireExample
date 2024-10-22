@@ -1,6 +1,6 @@
-﻿using DotnetAspireExample.ApiService.Exams.Application.Exams.DTOs;
-using DotnetAspireExample.ApiService.Exams.Application.Exams.Repository;
+﻿using DotnetAspireExample.ApiService.Exams.Application.Exams.Repository;
 using DotnetAspireExample.ApiService.Exams.Domain;
+using DotnetAspireExample.Shared;
 using MediatR;
 
 namespace DotnetAspireExample.ApiService.Exams.Application.Exams.Queries.Handlers
@@ -19,7 +19,7 @@ namespace DotnetAspireExample.ApiService.Exams.Application.Exams.Queries.Handler
 
             return new List<ExamDto>
             { 
-                new ExamDto(request.ExamName)
+                new(request.ExamName, 10)
             };
 
         }

@@ -1,4 +1,5 @@
-﻿using DotnetAspireExample.ApiService.Exams.Application.Exams.Repository;
+﻿using Dapper;
+using DotnetAspireExample.ApiService.Exams.Application.Exams.Repository;
 using DotnetAspireExample.ApiService.Exams.Domain;
 using Microsoft.Data.SqlClient;
 
@@ -15,15 +16,12 @@ namespace DotnetAspireExample.ApiService.Exams.Repository
 
         public async Task<Exam> CreateAsync(Exam exam, CancellationToken cancellationToken)
         {
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = $"INSERT into Exams (ExamId, ExamName, MaxMark) VALUES (2, {exam.ExamName}, {exam.MaxMark})";
-            cmd.Connection = Client;
+            string sqlString = $"INSERT into Exams (ExamId, ExamName) VALUES ('{Guid.NewGuid()}', '{exam.ExamName}')";
 
             try
             {
                 await Client.OpenAsync();
-                var result = cmd.ExecuteNonQuery();
+                var rowsAffected = await Client.ExecuteAsync(sqlString, exam);
                 await Client.CloseAsync();
             }
             catch (Exception ex)
@@ -47,21 +45,20 @@ namespace DotnetAspireExample.ApiService.Exams.Repository
 
         public async Task<Exam> GetAsync(string name)
         {
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = "INSERT Exam (ExamId, ExamName) VALUES (1, 'LewisTest')";
-            cmd.Connection = Client;
+            var exams = new List<Exam>();
 
-            //try
-            //{
-            //    await Client.OpenAsync();
-            //    var result = cmd.ExecuteNonQuery();
-            //    await Client.CloseAsync();
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine(ex.Message);
-            //}
+            var sqlStatement = "SELECT * FROM Exams";
+
+            try
+            {
+                await Client.OpenAsync();
+                exams = Client.Query<Exam>(sqlStatement).ToList();
+                await Client.CloseAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
             return new Exam
             {

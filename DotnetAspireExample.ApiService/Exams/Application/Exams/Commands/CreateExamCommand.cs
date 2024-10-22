@@ -1,7 +1,7 @@
-﻿using DotnetAspireExample.ApiService.Exams.Application.Exams.DTOs;
+﻿using DotnetAspireExample.Shared;
 using MediatR;
 
 namespace DotnetAspireExample.ApiService.Exams.Application.Exams.Commands
 {
-    public record CreateExamCommand(CreateExamDto Exam) : IRequest<string>;
+    public record CreateExamCommand(ExamDto Exam) : IRequest<string>;
 }
