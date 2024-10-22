@@ -13,6 +13,7 @@
     <ProjectReference Include="..\DotnetAspireExample.ApiService\DotnetAspireExample.ApiService.csproj" />
     <ProjectReference Include="..\DotnetAspireExample.FunctionApp\DotnetAspireExample.FunctionApp.csproj" />
     <ProjectReference Include="..\DotnetAspireExample.Web\DotnetAspireExample.Web.csproj" />
+    <ProjectReference Include="..\testlewisreact.client\testlewisreact.client.esproj" />
   </ItemGroup>
 
   <ItemGroup>

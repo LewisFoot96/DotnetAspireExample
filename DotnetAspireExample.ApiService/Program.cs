@@ -1,4 +1,3 @@
-using DotnetAspireExample.ApiService;
 using DotnetAspireExample.ApiService.Exams.Application.Exams.Repository;
 using DotnetAspireExample.ApiService.Exams.Domain;
 using DotnetAspireExample.ApiService.Exams.Endpoints;

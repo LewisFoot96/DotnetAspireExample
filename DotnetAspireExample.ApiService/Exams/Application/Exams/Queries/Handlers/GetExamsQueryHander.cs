@@ -15,7 +15,7 @@ namespace DotnetAspireExample.ApiService.Exams.Application.Exams.Queries.Handler
         }
         public async Task<List<ExamDto>> Handle(GetExamsQuery request, CancellationToken cancellationToken)
         {
-            // var examResult = await _repository.GetAsync(request.ExamName);
+             var examResult = await _repository.GetAsync(request.ExamName);
 
             return new List<ExamDto>
             { 

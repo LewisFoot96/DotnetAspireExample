@@ -17,7 +17,7 @@ namespace DotnetAspireExample.ApiService.Exams.Repository
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = $"INSERT Exam (ExamId, ExamName) VALUES ({exam.ExamId}, {exam.ExamName})";
+            cmd.CommandText = $"INSERT into Exams (ExamId, ExamName, MaxMark) VALUES (2, {exam.ExamName}, {exam.MaxMark})";
             cmd.Connection = Client;
 
             try
@@ -45,17 +45,28 @@ namespace DotnetAspireExample.ApiService.Exams.Repository
             throw new NotImplementedException();
         }
 
-        public Task<Exam> GetAsync(string name)
+        public async Task<Exam> GetAsync(string name)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = "INSERT Exam (ExamId, ExamName) VALUES (1, 'LewisTest')";
             cmd.Connection = Client;
 
-            return new Task<Exam>(() => new Exam
+            //try
+            //{
+            //    await Client.OpenAsync();
+            //    var result = cmd.ExecuteNonQuery();
+            //    await Client.CloseAsync();
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+
+            return new Exam
             {
                 ExamName = "Lewis"
-            });
+            };
         }
     }
 }
