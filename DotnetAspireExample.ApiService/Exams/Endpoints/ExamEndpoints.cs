@@ -14,10 +14,10 @@ namespace DotnetAspireExample.ApiService.Exams.Endpoints
             //Minimal apis use method injection
             group.MapPost("/", CreateExam).RequireCors("_myAllowSpecificOrigins"); ;
 
-            group.MapGet("{name}", GetExams).RequireCors("_myAllowSpecificOrigins");
+            group.MapGet("/", GetExams).RequireCors("_myAllowSpecificOrigins");
         }
 
-        private static async Task<IResult> GetExams(string name, IMediator sender)
+        private static async Task<IResult> GetExams(IMediator sender)
         {
             var result = await sender.Send(new GetExamsQuery());
 

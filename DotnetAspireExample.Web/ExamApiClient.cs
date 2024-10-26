@@ -11,7 +11,7 @@ public class ExamApiClient(HttpClient httpClient)
     {
         List<ExamDto>? exams = null;
 
-        await foreach (var exam in httpClient.GetFromJsonAsAsyncEnumerable<ExamDto>("/exam/lewis", cancellationToken))
+        await foreach (var exam in httpClient.GetFromJsonAsAsyncEnumerable<ExamDto>("/exam", cancellationToken))
         {
             if (exams?.Count >= maxItems)
             {
