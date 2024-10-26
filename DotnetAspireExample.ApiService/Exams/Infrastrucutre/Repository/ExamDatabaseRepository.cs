@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using DotnetAspireExample.ApiService.Exams.Application.Exams.Repository;
 using DotnetAspireExample.ApiService.Exams.Domain;
+using DotnetAspireExample.Shared;
 using Microsoft.Data.SqlClient;
 
 namespace DotnetAspireExample.ApiService.Exams.Repository
@@ -37,6 +38,30 @@ namespace DotnetAspireExample.ApiService.Exams.Repository
         }
 
         public void DeleteAsync(CancellationToken cancellationToken) => throw new NotImplementedException();
+        public async Task<List<Exam>> GetAllAsync()
+        {
+            var exams = new List<Exam>();
+
+            var sqlStatement = "SELECT * FROM Exams";
+
+            try
+            {
+                await Client.OpenAsync();
+                exams = Client.Query<Exam>(sqlStatement).ToList();
+                await Client.CloseAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return exams;
+        }
+
+        public Task<Exam> GetAsync(ExamDto exam)
+        {
+            throw new NotImplementedException();
+        }
 
         public Task<Exam> UpdateAsync(Exam exam, CancellationToken cancellationToken)
         {

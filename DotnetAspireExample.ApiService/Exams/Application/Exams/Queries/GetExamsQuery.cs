@@ -3,5 +3,5 @@ using MediatR;
 
 namespace DotnetAspireExample.ApiService.Exams.Application.Exams.Queries
 {
-    public record GetExamsQuery(string ExamName) : IRequest<List<ExamDto>>;
+    public record GetExamsQuery : IRequest<List<ExamDto>>;
 }

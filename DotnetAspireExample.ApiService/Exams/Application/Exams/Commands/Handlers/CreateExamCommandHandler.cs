@@ -6,7 +6,7 @@ namespace DotnetAspireExample.ApiService.Exams.Application.Exams.Commands.Handle
 {
     public class CreateExamCommandHandler : IRequestHandler<CreateExamCommand, string>
     {
-        private IRepository<Exam> _examRepository;
+        private readonly IRepository<Exam> _examRepository;
 
         public CreateExamCommandHandler(IRepository<Exam> repository)
         {

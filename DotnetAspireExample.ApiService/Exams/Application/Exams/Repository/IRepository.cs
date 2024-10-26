@@ -1,4 +1,5 @@
 ﻿using DotnetAspireExample.ApiService.Exams.Domain;
+using DotnetAspireExample.Shared;
 
 namespace DotnetAspireExample.ApiService.Exams.Application.Exams.Repository
 {
@@ -10,7 +11,8 @@ namespace DotnetAspireExample.ApiService.Exams.Application.Exams.Repository
 
         void DeleteAsync(CancellationToken cancellationToken);
 
-        Task<T> GetAsync(string name);
-
+        Task<List<T>> GetAllAsync();
+        
+        Task<T> GetAsync(ExamDto exam);
     }
 }

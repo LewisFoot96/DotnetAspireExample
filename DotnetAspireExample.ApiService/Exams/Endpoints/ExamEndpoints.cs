@@ -19,7 +19,7 @@ namespace DotnetAspireExample.ApiService.Exams.Endpoints
 
         private static async Task<IResult> GetExams(string name, IMediator sender)
         {
-            var result = await sender.Send(new GetExamsQuery(name));
+            var result = await sender.Send(new GetExamsQuery());
 
             return
                 TypedResults.Ok(result);
