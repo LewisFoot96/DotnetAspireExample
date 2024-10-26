@@ -9,7 +9,7 @@ var sql = builder.AddSqlServer("sql");
 var sqldb = sql.AddDatabase("sqldb");
 
 var apiService = builder.AddProject<Projects.DotnetAspireExample_ApiService>("apiservice")
-    .WithReference(sqldb); //Refernce to the SQL server database
+    .WithReference(sqldb); //Reference to the SQL server database
 
 builder.AddProject<Projects.DotnetAspireExample_Web>("webfrontend")
     .WithExternalHttpEndpoints()

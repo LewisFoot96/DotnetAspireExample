@@ -8,7 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add service defaults & Aspire components.
 builder.AddServiceDefaults();
 
-builder.AddSqlServerClient("AZURE_SQL_CONNECTIONSTRING");
+//builder.AddSqlServerClient("AZURE_SQL_CONNECTIONSTRING");
+builder.AddSqlServerClient("myConnection");
 
 // Add services to the container.
 builder.Services.AddProblemDetails();

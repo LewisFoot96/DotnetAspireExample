@@ -1,5 +1,3 @@
-using static Google.Protobuf.Reflection.SourceCodeInfo.Types;
-using System.Net.Http;
 using System.Text.Json;
 using DotnetAspireExample.Shared;
 
@@ -32,17 +30,6 @@ public class ExamApiClient(HttpClient httpClient)
         var json = JsonSerializer.Serialize(examItem);
 
         var httpContent = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-        var httpResult = await httpClient.PostAsync($"/exam/", httpContent);
-
-        if (httpResult.IsSuccessStatusCode)
-        {
-            var result = (await JsonSerializer.DeserializeAsync<ExamDto>(
-                await httpResult.Content.ReadAsStreamAsync(),
-                new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = false,
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-                }))!;
-        }
+        await httpClient.PostAsync($"/exam/", httpContent);
     }
 }

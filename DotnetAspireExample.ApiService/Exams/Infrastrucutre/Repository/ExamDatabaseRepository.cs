@@ -21,7 +21,7 @@ namespace DotnetAspireExample.ApiService.Exams.Repository
 
             try
             {
-                await Client.OpenAsync();
+                await Client.OpenAsync(cancellationToken);
                 var rowsAffected = await Client.ExecuteAsync(sqlString, exam);
                 await Client.CloseAsync();
             }
@@ -29,8 +29,7 @@ namespace DotnetAspireExample.ApiService.Exams.Repository
             {
                 Console.WriteLine(ex.Message);
             }
-
-
+            
             return new Exam
             {
                 ExamName = "Lewis"
