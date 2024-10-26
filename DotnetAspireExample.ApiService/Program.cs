@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add service defaults & Aspire components.
 builder.AddServiceDefaults();
+builder.AddRedisOutputCache("cache");
 
 //builder.AddSqlServerClient("AZURE_SQL_CONNECTIONSTRING");
 builder.AddSqlServerClient("myConnection");
@@ -41,6 +42,8 @@ var app = builder.Build();
 app.UseExceptionHandler();
 
 app.UseCors();
+
+app.UseOutputCache();
 
 app.MapDefaultEndpoints();
 

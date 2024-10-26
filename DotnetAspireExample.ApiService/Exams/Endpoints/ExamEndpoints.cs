@@ -3,6 +3,7 @@ using DotnetAspireExample.ApiService.Exams.Application.Exams.Queries;
 using DotnetAspireExample.Shared;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 
 namespace DotnetAspireExample.ApiService.Exams.Endpoints
 {
@@ -17,6 +18,7 @@ namespace DotnetAspireExample.ApiService.Exams.Endpoints
             group.MapGet("/", GetExams).RequireCors("_myAllowSpecificOrigins");
         }
 
+        [OutputCache(Duration = 100)]
         private static async Task<IResult> GetExams(IMediator sender)
         {
             var result = await sender.Send(new GetExamsQuery());
