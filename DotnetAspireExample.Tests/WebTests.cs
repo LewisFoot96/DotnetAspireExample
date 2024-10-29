@@ -1,6 +1,3 @@
-using System.Text.Json;
-using DotnetAspireExample.Shared;
-
 namespace DotnetAspireExample.Tests;
 
 public class WebTests

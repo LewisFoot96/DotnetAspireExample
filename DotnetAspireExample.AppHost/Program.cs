@@ -2,7 +2,6 @@ var builder = DistributedApplication.CreateBuilder(args);
 
 var cache = builder.AddRedis("cache");
 
-
 var sql = builder.AddSqlServer("sql");
 var sqldb = sql.AddDatabase("sqldb");
 
@@ -20,7 +19,8 @@ builder.AddNpmApp("testreact", "C:\\Users\\lfoot\\source\\repos\\DotnetAspireExa
     .WithReference(cache);
 
 builder.AddProject<Projects.DotnetAspireExample_FunctionApp>("dotnetaspireexample-functionapp")
-    .WithReference(apiService); ;
+    .WithExternalHttpEndpoints()
+    .WithReference(apiService);
 
 builder.Build().Run();
 

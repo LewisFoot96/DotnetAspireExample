@@ -13,6 +13,8 @@ public class ExamService : IExamService
     {
         List<ExamDto> exams = null;
 
+        httpClient.BaseAddress = new("https://localhost:7449/");
+
         await foreach (var exam in httpClient.GetFromJsonAsAsyncEnumerable<ExamDto>("/exam", cancellationToken))
         {
             if (exams?.Count >= 10)

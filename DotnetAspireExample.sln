@@ -16,7 +16,7 @@ Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "testlewisreact.client", "te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetAspireExample.FunctionApp", "DotnetAspireExample.FunctionApp\DotnetAspireExample.FunctionApp.csproj", "{19C2DEA8-1E75-4466-89EB-DEB435755956}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetAspireExample.Shared", "DotnetAspireExample.Shared\DotnetAspireExample.Shared.csproj", "{A44FBC8E-4E08-434B-85EA-D9C018DECF65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetAspireExample.Shared", "DotnetAspireExample.Shared\DotnetAspireExample.Shared.csproj", "{A44FBC8E-4E08-434B-85EA-D9C018DECF65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
