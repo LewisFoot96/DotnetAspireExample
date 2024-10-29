@@ -23,3 +23,5 @@ builder.AddProject<Projects.DotnetAspireExample_FunctionApp>("dotnetaspireexampl
     .WithReference(apiService); ;
 
 builder.Build().Run();
+
+//https://learn.microsoft.com/en-us/dotnet/aspire/get-started/aspire-overview - Aspire overview

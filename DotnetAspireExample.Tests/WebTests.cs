@@ -1,3 +1,6 @@
+using System.Text.Json;
+using DotnetAspireExample.Shared;
+
 namespace DotnetAspireExample.Tests;
 
 public class WebTests
@@ -19,9 +22,10 @@ public class WebTests
 
         // Act
         var httpClient = app.CreateHttpClient("webfrontend");
-        await resourceNotificationService.WaitForResourceAsync("webfrontend", KnownResourceStates.Running).WaitAsync(TimeSpan.FromSeconds(30));
+        await resourceNotificationService.WaitForResourceAsync("webfrontend", KnownResourceStates.Running)
+            .WaitAsync(TimeSpan.FromSeconds(30));
         var response = await httpClient.GetAsync("/exam/");
-
+        
         // Assert
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
     }

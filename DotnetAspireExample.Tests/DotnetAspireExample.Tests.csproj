@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DotnetAspireExample.AppHost\DotnetAspireExample.AppHost.csproj" />
+    <ProjectReference Include="..\DotnetAspireExample.Shared\DotnetAspireExample.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
