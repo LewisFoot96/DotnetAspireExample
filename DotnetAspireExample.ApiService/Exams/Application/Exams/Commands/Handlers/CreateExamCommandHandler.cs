@@ -4,23 +4,16 @@ using MediatR;
 
 namespace DotnetAspireExample.ApiService.Exams.Application.Exams.Commands.Handlers
 {
-    public class CreateExamCommandHandler : IRequestHandler<CreateExamCommand, string>
+    public class CreateExamCommandHandler(IRepository<Exam> repository) : IRequestHandler<CreateExamCommand, string>
     {
-        private readonly IRepository<Exam> _examRepository;
-
-        public CreateExamCommandHandler(IRepository<Exam> repository)
-        {
-            _examRepository = repository;
-        }
-
         public async Task<string> Handle(CreateExamCommand request, CancellationToken cancellationToken)
         {
             var exam = new Exam
             {
-                ExamName = request.Exam.ExamName       
+                ExamName = request.Exam.ExamName
             };
-            var result = await _examRepository.CreateAsync(exam, cancellationToken);
-            return "Lewis";
+            var result = await repository.CreateAsync(exam, cancellationToken);
+            return result.ExamName;
         }
     }
 }

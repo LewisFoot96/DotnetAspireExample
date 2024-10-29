@@ -18,7 +18,7 @@ namespace DotnetAspireExample.ApiService.Exams.Endpoints
             group.MapGet("/", GetExams).RequireCors("_myAllowSpecificOrigins");
         }
 
-        [OutputCache(Duration = 100)]
+        [OutputCache(Duration = 10)]
         private static async Task<IResult> GetExams(IMediator sender)
         {
             var result = await sender.Send(new GetExamsQuery());

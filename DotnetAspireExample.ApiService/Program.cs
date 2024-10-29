@@ -1,7 +1,7 @@
 using DotnetAspireExample.ApiService.Exams.Application.Exams.Repository;
 using DotnetAspireExample.ApiService.Exams.Domain;
 using DotnetAspireExample.ApiService.Exams.Endpoints;
-using DotnetAspireExample.ApiService.Exams.Repository;
+using DotnetAspireExample.ApiService.Exams.Infrastrucutre.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,11 +20,11 @@ builder.Services.AddMediatR(cfg =>
 
 builder.Services.AddScoped<IRepository<Exam>, ExamDatabaseRepository>();
 
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+const string myAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(MyAllowSpecificOrigins,
+    options.AddPolicy(myAllowSpecificOrigins,
                           policy =>
                           {
                               policy.WithOrigins("https://localhost:7449")

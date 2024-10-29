@@ -4,16 +4,11 @@ using DotnetAspireExample.ApiService.Exams.Domain;
 using DotnetAspireExample.Shared;
 using Microsoft.Data.SqlClient;
 
-namespace DotnetAspireExample.ApiService.Exams.Repository
+namespace DotnetAspireExample.ApiService.Exams.Infrastrucutre.Repository
 {
-    public class ExamDatabaseRepository : IRepository<Exam>
+    public class ExamDatabaseRepository(SqlConnection client) : IRepository<Exam>
     {
-        public SqlConnection Client { get; }
-
-        public ExamDatabaseRepository(SqlConnection client)
-        {
-            Client = client;
-        }
+        public SqlConnection Client { get; } = client;
 
         public async Task<Exam> CreateAsync(Exam exam, CancellationToken cancellationToken)
         {
@@ -65,29 +60,6 @@ namespace DotnetAspireExample.ApiService.Exams.Repository
         public Task<Exam> UpdateAsync(Exam exam, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
-        }
-
-        public async Task<Exam> GetAsync(string name)
-        {
-            var exams = new List<Exam>();
-
-            var sqlStatement = "SELECT * FROM Exams";
-
-            try
-            {
-                await Client.OpenAsync();
-                exams = Client.Query<Exam>(sqlStatement).ToList();
-                await Client.CloseAsync();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-            return new Exam
-            {
-                ExamName = "Lewis"
-            };
         }
     }
 }

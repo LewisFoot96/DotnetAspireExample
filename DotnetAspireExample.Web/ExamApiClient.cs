@@ -15,6 +15,7 @@ public class ExamApiClient(HttpClient httpClient)
             {
                 break;
             }
+
             if (exam is not null)
             {
                 exams ??= [];
@@ -30,6 +31,6 @@ public class ExamApiClient(HttpClient httpClient)
         var json = JsonSerializer.Serialize(examItem);
 
         var httpContent = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-        await httpClient.PostAsync($"/exam/", httpContent);
+        await httpClient.PostAsync("/exam/", httpContent, cancellationToken);
     }
 }
