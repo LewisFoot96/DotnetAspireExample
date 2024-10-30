@@ -4,8 +4,6 @@ using DotnetAspireExample.Shared;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
-using System.Diagnostics;
-using System.Diagnostics.Metrics;
 
 namespace DotnetAspireExample.ApiService.Exams.Endpoints
 {

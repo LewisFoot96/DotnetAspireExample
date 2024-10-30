@@ -39,6 +39,8 @@ else
 @code {
     private ExamDto[]? exams;
 
+    private static Random random = new Random();
+
     protected override async Task OnInitializedAsync()
     {
         exams = await ExamApi.GetExamAsync();
@@ -46,6 +48,10 @@ else
 
     private async Task AddRandomExam()
     {
-        await ExamApi.CreateExamAsync(new ExamDto("Test", 10));
+        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        var randomName = new string(Enumerable.Repeat(chars, 5)
+            .Select(s => s[random.Next(s.Length)]).ToArray());
+
+        await ExamApi.CreateExamAsync(new ExamDto(randomName, 10));
     }
 }
