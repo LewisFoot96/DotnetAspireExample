@@ -1,12 +1,20 @@
+using System.Diagnostics;
 using System.Text.Json;
 using DotnetAspireExample.Shared;
 
 namespace DotnetAspireExample.Web;
 
-public class ExamApiClient(HttpClient httpClient)
+public class ExamApiClient(HttpClient httpClient, ILogger<ExamApiClient> logger)
 {
+    private static readonly ActivitySource RegisteredActivity = new ("Examples.ManualInstrumentations.Registered");
+    
     public async Task<ExamDto[]> GetExamAsync(int maxItems = 10, CancellationToken cancellationToken = default)
     {
+        using (var activity = RegisteredActivity.StartActivity("Main"))
+        {
+            activity?.SetTag("foo", "bar1");
+            // your logic for Main activity
+        }
         List<ExamDto>? exams = null;
 
         await foreach (var exam in httpClient.GetFromJsonAsAsyncEnumerable<ExamDto>("/exam", cancellationToken))
@@ -23,6 +31,8 @@ public class ExamApiClient(HttpClient httpClient)
             }
         }
 
+        logger.LogInformation("Received {Count} exams", exams?.Count ?? 0);
+        logger.LogError("Test error");
         return exams?.ToArray() ?? [];
     }
 

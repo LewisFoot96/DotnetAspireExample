@@ -15,7 +15,9 @@
       "launchBrowser": true,
       "launchUrl": "exam",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "OTEL_DOTNET_AUTO_TRACES_ADDITIONAL_SOURCES": "MyActivitySource",
+        "OTEL_DOTNET_AUTO_METRICS_ADDITIONAL_SOURCES": "Examples.Service"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7449;http://localhost:5556"

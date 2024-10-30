@@ -1,12 +1,26 @@
+using DotnetAspireExample.ApiService.Exams;
 using DotnetAspireExample.ApiService.Exams.Application.Exams.Repository;
 using DotnetAspireExample.ApiService.Exams.Domain;
 using DotnetAspireExample.ApiService.Exams.Endpoints;
 using DotnetAspireExample.ApiService.Exams.Infrastrucutre.Repository;
+using OpenTelemetry.Metrics;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add service defaults & Aspire components.
 builder.AddServiceDefaults();
+builder.Services.AddOpenTelemetry()
+           .WithMetrics(metrics =>
+           {
+               metrics.AddMeter(DiagnosticsConfig.Meter.Name);
+           }
+           )
+           .WithTracing(tracing =>
+           {
+               tracing.AddSource(DiagnosticsConfig.ActivitySource.Name);
+           });
+
+
 builder.AddRedisOutputCache("cache");
 
 //builder.AddSqlServerClient("AZURE_SQL_CONNECTIONSTRING");

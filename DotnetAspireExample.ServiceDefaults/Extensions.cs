@@ -5,7 +5,9 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Logging;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
+using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+using System.Diagnostics;
 
 namespace Microsoft.Extensions.Hosting;
 
@@ -48,10 +50,12 @@ public static class Extensions
                 metrics.AddAspNetCoreInstrumentation()
                     .AddHttpClientInstrumentation()
                     .AddRuntimeInstrumentation();
+
             })
             .WithTracing(tracing =>
             {
-                tracing.AddAspNetCoreInstrumentation()
+                tracing
+                .AddAspNetCoreInstrumentation()
                     // Uncomment the following line to enable gRPC instrumentation (requires the OpenTelemetry.Instrumentation.GrpcNetClient package)
                     //.AddGrpcClientInstrumentation()
                     .AddHttpClientInstrumentation();
