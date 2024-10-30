@@ -3,7 +3,6 @@ using DotnetAspireExample.ApiService.Exams.Application.Exams.Repository;
 using DotnetAspireExample.ApiService.Exams.Domain;
 using DotnetAspireExample.ApiService.Exams.Endpoints;
 using DotnetAspireExample.ApiService.Exams.Infrastrucutre.Repository;
-using OpenTelemetry.Metrics;
 
 var builder = WebApplication.CreateBuilder(args);
 
