@@ -13,7 +13,7 @@ function App() {
         : (
             <ul>
                 {exams.map((exam, index) => (
-                    <li key={index}>{exam.ExamName}</li>
+                    <li key={index}>{exam.examName}</li>
                 ))}
             </ul>
         )
@@ -27,9 +27,8 @@ function App() {
     );
 
     async function populateExamData() {
-        const response = await fetch('https://localhost:7449/exam/name');
+        const response = await fetch('https://localhost:7449/exam/');
         const data = await response.json();
-        console.log(data);
         setExams(data);
     }
 }
