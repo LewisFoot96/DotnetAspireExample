@@ -1,16 +1,14 @@
 {
   "projectPath": ".",
   "outputPath": "aspirate-output",
+  "containerRegistry": "n",
   "containerImageTags": [
     "latest"
   ],
-  "imagePullPolicy": "Always",
   "containerBuilder": "docker",
   "outputFormat": "kustomize",
-  "skipFinalKustomizeGeneration": false,
   "privateRegistryEmail": "aspir8@aka.ms",
-  "includeDashboard": false,
-  "useCustomNamespace": false,
+  "includeDashboard": true,
   "secrets": {
     "salt": "s6P/0a1gKpecsTSf",
     "hash": "fE3obfDHPZaf2M/eC484UslHzxQtPJz9KjSDa\u002Byb2gc=",
