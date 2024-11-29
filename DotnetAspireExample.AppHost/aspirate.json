@@ -1,7 +1,7 @@
 {
   "TemplatePath": null,
   "ContainerSettings": {
-    "Registry": "n",
+    "Registry": "test",
     "RepositoryPrefix": null,
     "Tags": [
       "latest"
