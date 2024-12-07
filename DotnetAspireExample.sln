@@ -18,6 +18,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetAspireExample.Functio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetAspireExample.Shared", "DotnetAspireExample.Shared\DotnetAspireExample.Shared.csproj", "{A44FBC8E-4E08-434B-85EA-D9C018DECF65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetAspireExample.Maui", "DotnetAspireExample.Maui\DotnetAspireExample.Maui.csproj", "{7F24AFFA-5C20-496C-BDB4-D1B356E05301}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,11 @@ Global
 		{A44FBC8E-4E08-434B-85EA-D9C018DECF65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A44FBC8E-4E08-434B-85EA-D9C018DECF65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A44FBC8E-4E08-434B-85EA-D9C018DECF65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F24AFFA-5C20-496C-BDB4-D1B356E05301}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F24AFFA-5C20-496C-BDB4-D1B356E05301}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F24AFFA-5C20-496C-BDB4-D1B356E05301}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7F24AFFA-5C20-496C-BDB4-D1B356E05301}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F24AFFA-5C20-496C-BDB4-D1B356E05301}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
