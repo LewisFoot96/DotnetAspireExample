@@ -31,7 +31,6 @@ namespace DotnetAspireExample.ApiService.Exams.Endpoints
 
             childActivity?.Stop();
 
-
             return
                 TypedResults.Ok(result);
 
